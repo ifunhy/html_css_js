@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산기</title>
+</head>
+
+<body>
+    <div>
+        <label for="sign">select</label>
+        <input type="radio" name="operation" id="plus" value="plus">+
+        <input type="radio" name="operation" id="minus" value="minus">-
+        <input type="radio" name="operation" id="multiplication" value="multiplication">*
+        <input type="radio" name="operation" id="division" value="division">/
+        <br>
+        <input type="text" id="value1">
+        <input type="text" id="value2">
+        <button onclick="dataGet()">실행</button>
+        <p id="print">결과값</p>
+        <script>
+            function dataGet() {
+                const myValue1 = document.getElementById("value1").value;
+                const myValue2 = document.getElementById("value2").value;
+                const operation = document.querySelector('input[name="operation"]:checked');
+                let result = 0;
+
+                if (operation.value == "plus") {
+                    result = Number(value1) + Number(value2);
+                } else if (operation.value == "minus") {
+                    result = Number(value1) - Number(value2);
+                } else if (operation.value == "multiplication") {
+                    result = Number(value1) * Number(value2);
+                } else {
+                    result = Number(value1) / Number(value2);
+                }
+
+                document.getElementById("print").innerHTML = result;
+                console.log(result);
+
+            }
+
+        </script>
+    </div>
+</body>
+
+</html>
+<!-- select 박스로 연산기호 넣고 -->
+<!-- input 박스 두 개 -->
+<!-- 실행 버튼 누르는 순간  -->
+<!-- 아래에 '결과값' 자리에 값으로 변환 -->
+<!-- Number로 형변환 필요 -->

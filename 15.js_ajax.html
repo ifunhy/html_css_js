@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js ajax</title>
+</head>
+
+<body>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script>
+        // $(document).ready : DOM객체가 완전히 로드된 이후에 코드 실행한다라는 의미
+        $(document).ready(function () {                             // 비동기로 동작, ready(콜백함수)
+            $.ajax({                                                // ajax함수를 통해 url 호출(늦게 돌아올 거임)
+                url: "https://jsonplaceholder.typicode.com/posts/1",
+                type: 'GET',
+                dataType: 'json',
+                success: function (a) { // ajax가 성공하면 -> 주어지는 매개변수 a를 받아서 실행(전체 비동기 함수 내에서 동기적으로 실행)
+                    const objt = a;     // a에는 json을 ajax가 파싱하여 객체화된 객체가 담겨져 있음
+                    console.log(objt);
+
+                    // 콜백헬이 되는 과정(아래의 내용이 연쇄적 발생) 
+                    // 서버2에 서버1로부터 받은 값을 다시 요청
+                    // ajax 요청이 다시 시작
+                    // 서버2로부터 받은 값을 서버3으로 다시 요청
+                },
+                error: function () {
+                }
+            })
+        });
+        console.log("hello world");
+    </script>
+</body>
+
+</html>

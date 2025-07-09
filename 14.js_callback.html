@@ -1,18 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>js 콜백함수</title>
 </head>
+
 <body>
     <button onclick="basicFunction()">일반함수 예제</button>
-    <button>콜백함수 예제1</button>
+    <button onclick="callBackFuntion1()">콜백함수 예제1</button>
+    <button onclick="callBackFuntion2()">콜백함수 예제2</button>
+    <button onclick="callBackFuntion3()">콜백함수 예제3</button>
     <script>
         function basicFunction() {
             console.log("hello world");
         }
+
+        function callBackFuntion1() {
+            userInput((name) => { alert(name + "님 안녕하세요") });
+            // 매개변수는 name, (name) => {alert(name+"님 안녕하세요")}는 콜백함수
+            // 이렇게 구현하는 이유 : 지금 당장 사용하는 게 아니라, 필요 상황이 왔을 때 호출하기 위함
+        }
+
+        function userInput(callback) {
+            callback("홍길동"); // (name) => {alert(name+"님 안녕하세요")}가 넘어오면 name 자리에 "홍길동"이 넘겨지고 alert로 실행
+        }
+
+        function callBackFuntion2() {
+            const numbers = [1, 2, 3, 4, 5];
+            numbers.forEach((a) => console.log(a)); // 콜백함수의 일종 (a라는 값이 있을 건데, 그 a를 꺼내서 콘솔에 출력한다)
+            // javascript는 기본적으로 동기적으로 동작
+            console.log("hello world");
+        }
+
+        function callBackFuntion3() {
+            // setTimeOut : 콜백함수처리 + 비동기적으로 동작하는 대표적인 함수
+            // 2초 뒤에 콜백함수를 실행
+            setTimeout(() => console.log("hello world1"), 2000); //setTimeOut(콜백함수,시간)
+            console.log("hello world2"); // 비동기적으로 동작하기 때문에 hello world2부터 실행되고, 2초 후 hello world1 실행
+
+            setTimeout(() => console.log("hello world3"), 2000); //setTimeOut(콜백함수,시간)
+            console.log("hello world4");
+        }
     </script>
-    
+
 </body>
+
 </html>

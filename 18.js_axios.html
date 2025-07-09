@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js axios</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script> <!-- axios 외부 링크 -->
+</head>
+
+<body>
+    <button onclick="postApiSingleData()">단건데이터 호출</button>
+    <button onclick="postApiMultiData()">리스트데이터 호출</button>
+
+    <script>
+        async function postApiSingleData() {
+            // axios함수 : 비동기함수. json을 객체로 parsing해주는 기능 내장
+            const result = await axios.get("https://jsonplaceholder.typicode.com/posts/1")
+            console.log(result.data);   // data만 출력
+        }
+
+        async function postApiMultiData() {
+            // post에서 리스트데이터를 json으로 주면 axios가 파싱해서 객체로 만듦
+            const result = await axios.get("https://jsonplaceholder.typicode.com/posts")
+            console.log(result.data);
+        }
+    </script>
+</body>
+
+</html>

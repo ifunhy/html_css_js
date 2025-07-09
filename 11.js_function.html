@@ -81,6 +81,7 @@
         }
 
         function moveScreen() {
+            // 화면 이동 함수
             window.location.href = "https://naver.com";
         }
 
@@ -122,11 +123,11 @@
     <script>
         const b1 = document.getElementById("button1");
         if (b1) {
-            b1.addEventListener('click', () => alert("hello world"));   // alert : 팝업함수
+            b1.addEventListener('click', () => alert("hello world"));   // () => alert("hello world") : '콜백함수'라고 불림
         }
 
         function scrollEvent() {
-            window.addEventListener('scroll', () => console.log("hello world2"));
+            window.addEventListener('scroll', () => console.log("hello world2"));  // 'scroll' : 매개변수 / () => console.log("hello world2") : 콜백함수
         }
 
         function addItem() {

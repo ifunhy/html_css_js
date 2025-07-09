@@ -48,6 +48,7 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th>userId</th>
                     <th>id</th>
                     <th>title</th>
                 </tr>
@@ -59,12 +60,12 @@
     </div>
     <script>
         async function postApiMultiData() {
-            const result = await axios.get("http://localhost:8080/post/list")    // axios를 이용해 외부 API에서 게시글 데이터를 GET 요청으로 받아옴
+            const result = await axios.get("https://jsonplaceholder.typicode.com/posts")    // axios를 이용해 외부 API에서 게시글 데이터를 GET 요청으로 받아옴
             const post = result.data;   // 응답 결과에서 실제 게시글 배열만 추출
 
             for (let i = 0; i < post.length; i++) { // 반복문을 돌며 각 게시글을 테이블 행(html 문자열)로 생성하여 삽입
                 // 백틱(`)을 사용해 변수 삽입 가능 (템플릿 리터럴)
-                const html = `<tr><td>${post[i].id}</td><td>${post[i].title}</td><tr>`;   // <tr> 태그는 반드시 닫아야 함
+                const html = `<tr><td>${post[i].userId}</td><td>${post[i].id}</td><td>${post[i].title}</td><tr>`;   // <tr> 태그는 반드시 닫아야 함
                 document.getElementById("tbodyId").innerHTML += html;   // html 문자열을 기존 tbody에 추가
             }
         }
@@ -75,3 +76,7 @@
 </body>
 
 </html>
+
+
+
+<!-- <object style="width: 1;" data="../common/header.html" type="text/html"></object> -->

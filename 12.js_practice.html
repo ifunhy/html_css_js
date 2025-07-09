@@ -21,19 +21,19 @@
         <p id="print">결과값</p>
         <script>
             function dataGet() {
-                const myValue1 = document.getElementById("value1").value;
-                const myValue2 = document.getElementById("value2").value;
+                const myValue1 = Number(document.getElementById("value1").value);
+                const myValue2 = Number(document.getElementById("value2").value);
                 const operation = document.querySelector('input[name="operation"]:checked');
                 let result = 0;
 
                 if (operation.value == "plus") {
-                    result = Number(value1) + Number(value2);
+                    result = value1 + value2;
                 } else if (operation.value == "minus") {
-                    result = Number(value1) - Number(value2);
+                    result = value1 - value2;
                 } else if (operation.value == "multiplication") {
-                    result = Number(value1) * Number(value2);
+                    result = value1 * value2;
                 } else {
-                    result = Number(value1) / Number(value2);
+                    result = value1 / value2;
                 }
 
                 document.getElementById("print").innerHTML = result;

@@ -50,6 +50,13 @@
         const jsonText2 = '[{"name":"Alice","age":25,"score":85},{"name":"Bob","age":28,"score":92},{"name":"Charlie","age":32,"score":88}]';
 
         const obj2 = JSON.parse(jsonText2); // javascript 객체로 변환
+        
+        for (let i = 0; i < obj2.length; i++) {
+            // js에서 문자열에 js변수를 끼워넣을 때 빽틱(`)에 ${}를 활용
+            const html = `<tr><td>${obj2[i].name}</td><td>${obj2[i].age}</td><td>${obj2[i].score}</td></tr>`;
+            document.getElementById("tbodyId").innerHTML += html;
+        }
+        
         // const tbody = document.getElementById("tbodyId");   // tbodyId의 요소를 가져옴
 
         // obj2.forEach(person => {                            // 각 요소(person)를 하나씩 반복 처리
@@ -71,11 +78,7 @@
         //     tbody.appendChild(row);     // 완성된 <tr>을 <tbody>에 추가
         // });
 
-        for (let i = 0; i < obj2.length; i++) {
-            // js에서 문자열에 js변수를 끼워넣을 때 빽틱(`)에 ${}를 활용
-            const html = `<tr><td>${obj2[i].name}</td><td>${obj2[i].age}</td><td>${obj2[i].score}</td></tr>`;
-            document.getElementById("tbodyId").innerHTML += html;
-        }
+
 
         //json 직렬화
         const jsonText3 = JSON.stringify(obj2);     // json 문자열화

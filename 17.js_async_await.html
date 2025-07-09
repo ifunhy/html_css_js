@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>callback 지옥</title>
+</head>
+
+<!-- 16번 파일과 차이점 확인 -->
+<body>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script>
+        // async는 함수 전체가 비동기임을 의미
+        async function callBackHell() { // async 추가
+            // await는 비동기 함수 내에서 동기성을 보장하기 위한 키워드
+            const result1 = await $(document).ready(function () {   // await 추가하고 result1에 값 저장
+                $.ajax({
+                    url: "https://jsonplaceholder.typicode.com/posts/1",
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (a) {
+                        console.log("a :" + a);
+                    },
+                    error: function () {
+                    }
+                })
+            });
+            const result2 = await $(document).ready(function () {   // await 추가하고 result1에 값 저장
+                $.ajax({
+                    url: "https://jsonplaceholder.typicode.com/posts/1",
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (a) {
+                        console.log("b :" + a);
+                    },
+                    error: function () {
+                    }
+                })
+            });
+            const result3 = await $(document).ready(function () {   // await 추가하고 result1에 값 저장
+                $.ajax({
+                    url: "https://jsonplaceholder.typicode.com/posts/1",
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (a) {
+                        console.log("c :" + a);
+                    },
+                    error: function () {
+                    }
+                })
+            });
+        }
+        callBackHell(); // 아래의 hello world와는 동기적으로 보장하지 못함(비동기). 하지만 콜백함수 내에서는 동기적으로 실행
+        console.log("hello world");
+
+    </script>
+</body>
+
+</html>
+
+
+
+<!-- console.log("a :" + a); -->
